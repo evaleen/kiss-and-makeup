@@ -19,12 +19,11 @@ class MakeUpSearch extends React.Component {
           key={key}
           className={classNames({
             'make-up-type': true,
-            'selected-make-up-type': !isEmpty(selectedType) && isEqual(selectedType, key),
+            'selected-make-up-type': !isEmpty(selectedType) && isEqual(selectedType, type),
           })}
         >
           <button
-            onClick={selectType}
-            value={key}
+            onClick={() => selectType(type)}
             alt={type.name}
             className={classNames('type-img', `type-img-${key}`)}
           />
@@ -55,8 +54,16 @@ class MakeUpSearch extends React.Component {
 }
 
 MakeUpSearch.propTypes = {
-  selectedType: React.PropTypes.string,
+  selectedType: React.PropTypes.shape({
+    product: React.PropTypes.string,
+    category: React.PropTypes.string,
+    name: React.PropTypes.string,
+  }),
   selectType: React.PropTypes.func.isRequired,
   searchProducts: React.PropTypes.func.isRequired,
 };
+MakeUpSearch.defaultProps = {
+  selectedType: {},
+};
+
 export default MakeUpSearch;

@@ -6,6 +6,7 @@ import './css/Home.css';
 
 import MakeUpSearch from './js/components/search/MakeUpSearch';
 import MakeUpResults from './js/components/results/MakeUpResults';
+import MakeUpApiClient from './js/api/MakeUpApiClient';
 
 class Home extends React.Component {
 
@@ -13,28 +14,46 @@ class Home extends React.Component {
     super();
     this.state = {
       getSearch: false,
-      type: undefined,
+      type: {},
+      results: [],
     };
     this.selectType = this.selectType.bind(this);
     this.searchProducts = this.searchProducts.bind(this);
+    this.backToSearch = this.backToSearch.bind(this);
     this.renderMainContent = this.renderMainContent.bind(this);
   }
 
-  selectType({ target: { value } }) {
-    this.setState({ type: value });
+  selectType(type) {
+    this.setState({ type });
   }
 
   searchProducts() {
-    // Check all data correct?
-    // Do search request
-    this.setState({ getSearch: true });
+    const { type } = this.state;
+    MakeUpApiClient.doSearch(type, (response) => {
+      this.setState({
+        results: response,
+        getSearch: true,
+      });
+    });
+  }
+
+  backToSearch() {
+    this.setState({
+      type: undefined,
+      getSearch: false,
+      results: undefined,
+    });
   }
 
   renderMainContent() {
-    const { type, getSearch } = this.state;
+    const { type, results, getSearch } = this.state;
     if (getSearch) {
       return (
-        <MakeUpResults />
+        <MakeUpResults
+          type={type}
+          searchResults={results}
+          backToSearch={this.backToSearch}
+        />
       );
     }
     return (
