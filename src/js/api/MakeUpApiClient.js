@@ -21,7 +21,9 @@ function parseJSON(response) {
 function doSearch(product, response) {
   let queryParam = `?product_type=${product.product}`;
   queryParam = product.category ? `${queryParam}&category=${product.category}` : queryParam;
-  return fetch(`${BASE_URL}${queryParam}`)
+  return fetch(`${BASE_URL}${queryParam}`, {
+    accept: 'application/json',
+  })
   .then(checkStatus)
   .then(parseJSON)
   .then(response);
