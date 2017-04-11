@@ -1,4 +1,4 @@
-.result-item {
+.result-product {
   width: 250px;
   display: inline-block;
   position: relative;
@@ -8,7 +8,7 @@
 .product-img {
   max-width: 200px;
   max-height: 200px;
-  size: 100%;
+  cursor: pointer;
 }
 
 .product-name {
@@ -17,4 +17,9 @@
   z-index: 5;
   display: flex;
   margin: 0px 50px;
+  cursor: pointer;
+}
+
+.product-name:hover {
+  text-decoration: underline;
 }
