@@ -2,6 +2,7 @@
 
 import React from 'react';
 import SearchResultItem from './SearchResultItem';
+import '../../../css/MakeUpResults.css';
 
 class MakeUpResults extends React.Component {
 
@@ -9,6 +10,7 @@ class MakeUpResults extends React.Component {
     return searchResults.map((item) => {
       return (
         <SearchResultItem
+          key={item.id}
           item={item}
         />
       );
@@ -23,7 +25,7 @@ class MakeUpResults extends React.Component {
           className="back-to-search-button"
           onClick={backToSearch}
         >
-          Back to search
+           &lt; Back to search
         </button>
         <p>Results Page  for {type.name}</p>
         <div className="search-results">

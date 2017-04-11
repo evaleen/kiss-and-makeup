@@ -1,0 +1,13 @@
+.back-to-search-button {
+  background-color: #d94c53;
+  border: none;
+  padding: 10px;
+}
+
+.back-to-search-button:hover {
+  background-color: #f2545b;
+}
+
+.search-results {
+  text-align: center;
+}

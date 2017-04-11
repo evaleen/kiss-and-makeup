@@ -3,7 +3,7 @@
   height: 150px;
   margin: 10px;
   background-color: #fff;
-  border: 2px solid #fff;
+  border: 2px solid #fdedee;
   display: inline-block;
   position: relative;
 }
@@ -19,7 +19,7 @@
 }
 
 .type-img:focus {
-  outline:0;
+  outline: 0;
 }
 
 .type-img-LIPSTICK {
