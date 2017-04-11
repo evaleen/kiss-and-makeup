@@ -2,14 +2,14 @@
 
 import React from 'react';
 
-const MakeUpResults = React.createClass({
+class MakeUpResults extends React.PureComponent {
 
   render() {
     return (
-      <div className="search">
+      <div className="results">
         Results Page
       </div>
     );
-  },
-});
+  }
+}
 export default MakeUpResults;
