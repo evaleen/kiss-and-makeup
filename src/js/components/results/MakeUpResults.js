@@ -1,17 +1,16 @@
 'use es6';
 
 import React from 'react';
-import { each } from 'underscore';
+import SearchResultItem from './SearchResultItem';
 
 class MakeUpResults extends React.Component {
 
   static renderResults(searchResults) {
     return searchResults.map((item) => {
       return (
-        <div>
-          {item.name}
-          {item.price}
-        </div>
+        <SearchResultItem
+          item={item}
+        />
       );
     });
   }
@@ -21,12 +20,15 @@ class MakeUpResults extends React.Component {
     return (
       <div className="results">
         <button
+          className="back-to-search-button"
           onClick={backToSearch}
         >
           Back to search
         </button>
-        Results Page  for {type.name}
-        {MakeUpResults.renderResults(searchResults)}
+        <p>Results Page  for {type.name}</p>
+        <div className="search-results">
+          {MakeUpResults.renderResults(searchResults)}
+        </div>
       </div>
     );
   }

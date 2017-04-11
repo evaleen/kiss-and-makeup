@@ -1,48 +1,9 @@
-
 .search {
   text-align: center;
 }
 
-.make-up-type {
-  width: 150px;
-  height: 150px;
-  margin: 10px;
-  background-color: #fff;
-  border: 2px solid #fff;
-  display: inline-block;
-  position: relative;
-}
-
-.selected-make-up-type {
-  border: 2px solid #f2545b;
-}
-
-.type-img {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.type-img:focus {
-  outline:0;
-}
-
-.type-img-LIPSTICK {
-  background: url(../img/LIPSTICK.png);
-  background-size: 100% 100%;
-}
-
-.type-img-BLUSH {
-  background: url(../img/BLUSH.jpg);
-  background-size: 100% 100%;
-
-}
-
-.type-text {
-    z-index: 1;
-    position: absolute;
-    bottom: 2px;
-    margin-left: 10px;
+.types {
+  padding-bottom: 10px;
 }
 
 .search-button {
