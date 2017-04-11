@@ -2,7 +2,7 @@
 
 import 'whatwg-fetch';
 
-const BASE_URL = 'http://makeup-api.herokuapp.com/api/v1/products.json';
+const BASE_URL = 'https://makeup-api.herokuapp.com/api/v1/products.json';
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
