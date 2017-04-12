@@ -15,7 +15,7 @@ const Types = {
     category: 'cream',
     name: 'Cream Blush',
   },
-  BRONSER: {
+  BRONZER: {
     product: 'bronzer',
     name: 'Bronzer',
   },
