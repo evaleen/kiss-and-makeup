@@ -2,14 +2,28 @@
 
 import React from 'react';
 
+import { isEmpty } from 'underscore';
+
 import Modal from 'react-modal';
 import '../../../css/ProductInformationModal.css';
 
 class ProductInformationModal extends React.Component {
 
+  static maybeRenderDescription(description) {
+    if (description) {
+      const ingredientsIndex = description.match(/ingredients|directions|how to|tip/i);
+      console.log(ingredientsIndex);
+      if (ingredientsIndex) {
+        description = description.slice(0, ingredientsIndex.index);
+      }
+      return (<div className="product-description product-attribute">{description}</div>);
+    }
+    return null;
+  }
+
   static maybeRenderPrice(price) {
     return price
-      ? <div className="product-price">Price: {price}</div>
+      ? <div className="product-price product-attribute">Price: {price}</div>
       : null;
   }
 
@@ -25,14 +39,29 @@ class ProductInformationModal extends React.Component {
         {label}
       </a>)
       : label;
-      return <div className="product-price">Brand: {linkToBrand}</div>;
+      return <div className="product-brand product-attribute">Brand: {linkToBrand}</div>;
     }
     return null;
   }
 
   static maybeRenderColours(colours) {
-    if (colours) {
-      console.log(colours);
+    if (!isEmpty(colours)) {
+      const colourBlocks = colours.map((colour) => {
+        const style = { 'background-color': colour.hex_value };
+        return (
+          <div
+            key={colour.hex_value}
+            id={colour.hex_value}
+            className="colour-block"
+            style={style}
+          />
+        );
+      });
+      return (
+        <div className="colour-blocks product-attribute">
+          {colourBlocks}
+        </div>
+      );
     }
     return null;
   }
@@ -47,7 +76,7 @@ class ProductInformationModal extends React.Component {
         >
           Go to product
         </a>
-      )
+      );
     }
     return null;
   }
@@ -71,11 +100,11 @@ class ProductInformationModal extends React.Component {
         </div>
         <div className="modal-body">
           <img
-            className="modal-product-img"
+            className="modal-product-img product-attribute"
             src={product.image_link}
             alt={product.name}
           />
-          <div className="product-description">{product.description}</div>
+          {ProductInformationModal.maybeRenderDescription(product.description)}
           {ProductInformationModal.maybeRenderPrice(product.price)}
           {ProductInformationModal.maybeRenderBrandLink(product.brand, product.website_link)}
           {ProductInformationModal.maybeRenderColours(product.product_colors)}
