@@ -3,55 +3,51 @@
 import React from 'react';
 
 import '../../../css/MakeUpSearch.css';
-import Types from '../../constants/Types';
-
-import MakeUpType from './MakeUpType';
+import MakeUpTypeList from './MakeUpTypeList';
+import MakeUpColours from './MakeUpColours';
 
 class MakeUpSearch extends React.Component {
 
-  renderTypes() {
-    const { selectedType, selectType } = this.props;
-    return Object.keys(Types).map((key) => {
-      return (
-        <MakeUpType
-          key={key}
-          id={key}
-          type={Types[key]}
-          selectedType={selectedType}
-          selectType={selectType}
-        />);
-    });
-  }
-
   render() {
-    const { searchProducts } = this.props;
+    const { searchProducts, selectedType, selectType, addColour, selectedColours } = this.props;
     return (
-      <div className="search">
-        <div className="types">
-          {this.renderTypes()}
+      <div>
+        <div className="search-items">
+          <MakeUpTypeList
+            selectedType={selectedType}
+            selectType={selectType}
+          />
+          <MakeUpColours
+            selectedType={selectedType}
+            selectedColours={selectedColours}
+            addColour={addColour}
+          />
+          <div className="range">3. Select a range}</div>
         </div>
-        <button
-          className="search-button"
-          onClick={searchProducts}
-        >
-          Search
-        </button>
+        <div className="search">
+          <button
+            className="search-button"
+            onClick={searchProducts}
+          >
+            Search
+          </button>
+        </div>
       </div>
     );
   }
 }
 
 MakeUpSearch.propTypes = {
-  selectedType: React.PropTypes.shape({
-    product: React.PropTypes.string,
-    category: React.PropTypes.string,
-    name: React.PropTypes.string,
-  }),
+  selectedType: React.PropTypes.string,
   selectType: React.PropTypes.func.isRequired,
+  selectedColours: React.PropTypes.arrayOf(
+    React.PropTypes.string,
+  ).isRequired,
+  addColour: React.PropTypes.func.isRequired,
   searchProducts: React.PropTypes.func.isRequired,
 };
 MakeUpSearch.defaultProps = {
-  selectedType: {},
+  selectedType: undefined,
 };
 
 export default MakeUpSearch;

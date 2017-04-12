@@ -7,6 +7,7 @@ import './css/Home.css';
 import MakeUpSearch from './js/components/search/MakeUpSearch';
 import MakeUpResults from './js/components/results/MakeUpResults';
 import MakeUpApiClient from './js/api/MakeUpApiClient';
+import Types from './js/constants/Types';
 
 class Home extends React.Component {
 
@@ -14,22 +15,32 @@ class Home extends React.Component {
     super();
     this.state = {
       getSearch: false,
-      type: {},
+      type: undefined,
       results: [],
+      selectedColours: [],
     };
     this.selectType = this.selectType.bind(this);
+    this.addColour = this.addColour.bind(this);
     this.searchProducts = this.searchProducts.bind(this);
     this.backToSearch = this.backToSearch.bind(this);
     this.renderMainContent = this.renderMainContent.bind(this);
   }
 
-  selectType(type) {
-    this.setState({ type });
+  addColour({ target: { id } }) {
+    const { selectedColours } = this.state;
+    this.setState({ selectedColours: selectedColours.concat([id]) });
+  }
+
+  selectType({ target: { id } }) {
+    this.setState({
+      type: id,
+      selectedColours: [],
+    });
   }
 
   searchProducts() {
     const { type } = this.state;
-    MakeUpApiClient.doSearch(type, (response) => {
+    MakeUpApiClient.doSearch(Types[type], (response) => {
       this.setState({
         results: response,
         getSearch: true,
@@ -46,11 +57,11 @@ class Home extends React.Component {
   }
 
   renderMainContent() {
-    const { type, results, getSearch } = this.state;
+    const { type, results, selectedColours, getSearch } = this.state;
     if (getSearch) {
       return (
         <MakeUpResults
-          type={type}
+          type={Types[type]}
           searchResults={results}
           backToSearch={this.backToSearch}
         />
@@ -60,7 +71,10 @@ class Home extends React.Component {
       <MakeUpSearch
         selectedType={type}
         selectType={this.selectType}
+        addColour={this.addColour}
+        selectedColours={selectedColours}
         searchProducts={this.searchProducts}
+
       />
     );
   }

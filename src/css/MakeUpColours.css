@@ -1,0 +1,31 @@
+.colour-list {
+  float: left;
+  width: 35%;
+  height: auto;
+  min-width: 200px;
+}
+
+.colour-header {
+  font-weight: bold;
+  color:  #d94c53;
+  text-decoration: underline;
+}
+
+.colour-section {
+  border: none;
+}
+
+.colour-block {
+  width: 36px;
+  height: 36px;
+  margin-right: 5px;
+  display: inline-block;
+}
+
+.colour-block:focus {
+  outline: none;
+}
+
+.selected-colour-block {
+  border: 2px solid #d94c53;
+}
