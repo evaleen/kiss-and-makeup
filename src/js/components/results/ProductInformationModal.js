@@ -1,18 +1,27 @@
 'use es6';
 
 import React from 'react';
-
 import { isEmpty } from 'underscore';
-
 import Modal from 'react-modal';
 import '../../../css/ProductInformationModal.css';
+
+const customStyle = {
+  overlay: {
+    position: 'absolute',
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    height: '100%',
+  },
+  content: {
+    position: 'absolute',
+    margin: '20px 25%',
+  },
+};
 
 class ProductInformationModal extends React.Component {
 
   static maybeRenderDescription(description) {
     if (description) {
       const ingredientsIndex = description.match(/ingredients|directions|how to|tip/i);
-      console.log(ingredientsIndex);
       if (ingredientsIndex) {
         description = description.slice(0, ingredientsIndex.index);
       }
@@ -29,12 +38,13 @@ class ProductInformationModal extends React.Component {
 
   static maybeRenderBrandLink(brandName, link) {
     if (brandName || link) {
-      const label = !brandName ? link : brandName;
+      const label = brandName ? brandName.charAt(0).toUpperCase() + brandName.slice(1) : link;
       const linkToBrand = link ?
       (<a
         href={link}
         target="_blank"
         rel="noopener noreferrer"
+        className="brand-link"
       >
         {label}
       </a>)
@@ -47,7 +57,7 @@ class ProductInformationModal extends React.Component {
   static maybeRenderColours(colours) {
     if (!isEmpty(colours)) {
       const colourBlocks = colours.map((colour) => {
-        const style = { 'background-color': colour.hex_value };
+        const style = { backgroundColor: colour.hex_value };
         return (
           <div
             key={colour.hex_value}
@@ -58,8 +68,11 @@ class ProductInformationModal extends React.Component {
         );
       });
       return (
-        <div className="colour-blocks product-attribute">
-          {colourBlocks}
+        <div className="product-attribute">
+          <span>Colours:</span>
+          <div className="colour-blocks">
+            {colourBlocks}
+          </div>
         </div>
       );
     }
@@ -69,13 +82,16 @@ class ProductInformationModal extends React.Component {
   static maybeRenderProductLink(link) {
     if (link) {
       return (
-        <a
-          href={link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Go to product
-        </a>
+        <div className="product-link-container">
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="product-link"
+          >
+            Go to product
+          </a>
+        </div>
       );
     }
     return null;
@@ -88,6 +104,7 @@ class ProductInformationModal extends React.Component {
         onRequestClose={closeModal}
         className="product-info-modal"
         contentLabel="Modal"
+        style={customStyle}
       >
         <div className="modal-header">
           <h3 className="modal-name">{product.name}</h3>
@@ -95,7 +112,7 @@ class ProductInformationModal extends React.Component {
             className="close-button"
             onClick={closeModal}
           >
-              X
+            X
           </button>
         </div>
         <div className="modal-body">

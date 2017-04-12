@@ -1,11 +1,15 @@
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100vw;
+}
+
 .product-info-modal {
   background-color: #fff;
   width: 50%;
-  height: 50%;
   min-width: 500px;
-  min-height: 500px;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .product-info-modal:focus {
@@ -22,11 +26,19 @@
   float: right;
   margin-top: 20px;
   margin-right: 20px;
+  background: none;
+  border: none;
+  color: #f2545b;
+  font-weight: bold;
+  font-size: large;
+}
+
+.close-button:hover {
+  color: #d94c53;
 }
 
 .modal-body {
   float: left;
-  width: 90%;
   margin-top: 20px;
 }
 
@@ -41,14 +53,44 @@
   min-height: 200px;
 }
 
+.brand-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.brand-link:hover {
+  text-decoration: underline;
+  color: #f2545b;
+  cursor: pointer;
+}
+
 .colour-block {
-  width: 50px;
-  height: 50px;
+  width: 36px;
+  height: 36px;
   margin-right: 5px;
   display: inline-block;
 }
 
 .product-attribute {
   padding-left: 20px;
+  padding-right: 20px;
   padding-bottom: 10px;
+}
+
+.product-link-container {
+  padding: 20px 0px 40px;
+  text-align: center;
+}
+
+.product-link {
+  padding: 15px 50px;
+  color: #fff;
+  background-color: #f2545b;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px 0px;
+}
+
+.product-link:hover {
+  background-color: #d94c53;
 }

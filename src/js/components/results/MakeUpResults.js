@@ -1,6 +1,7 @@
 'use es6';
 
 import React from 'react';
+import classNames from 'classnames';
 import { findWhere, isEmpty } from 'underscore';
 
 import SearchResultItem from './SearchResultItem';
@@ -60,7 +61,7 @@ class MakeUpResults extends React.Component {
     const { type, searchResults, backToSearch } = this.props;
     const maybeProductModal = this.maybeRenderProductModal(searchResults);
     return (
-      <div className="results">
+      <div className={classNames({ 'modal-open': !isEmpty(this.state.selectedProduct) })}>
         <button
           className="back-to-search-button"
           onClick={backToSearch}
