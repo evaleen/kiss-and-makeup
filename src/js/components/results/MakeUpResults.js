@@ -89,4 +89,7 @@ MakeUpResults.propTypes = {
   ).isRequired,
   backToSearch: React.PropTypes.func.isRequired,
 };
+MakeUpResults.defaultProps = {
+  selectedColours: [],
+};
 export default MakeUpResults;

@@ -1,15 +1,27 @@
 'use es6';
 
 import React from 'react';
+import { isEmpty, some } from 'underscore';
+
 import logo from './spinnylogo.png';
 import './css/Home.css';
-
 import MakeUpSearch from './js/components/search/MakeUpSearch';
 import MakeUpResults from './js/components/results/MakeUpResults';
 import MakeUpApiClient from './js/api/MakeUpApiClient';
 import Types from './js/constants/Types';
 
 class Home extends React.Component {
+
+  static filterByColours(products, colours) {
+    if (isEmpty(colours)) {
+      return products;
+    }
+    return products.filter((product) => {
+      return some(colours, (colour) => {
+        return some(product.product_colors, { hex_value: colour });
+      });
+    });
+  }
 
   constructor() {
     super();
@@ -28,7 +40,13 @@ class Home extends React.Component {
 
   addColour({ target: { id } }) {
     const { selectedColours } = this.state;
-    this.setState({ selectedColours: selectedColours.concat([id]) });
+    const index = selectedColours.indexOf(id);
+    if (index > -1) {
+      selectedColours.splice(index, 1);
+      this.setState({ selectedColours });
+    } else {
+      this.setState({ selectedColours: selectedColours.concat([id]) });
+    }
   }
 
   selectType({ target: { id } }) {
@@ -39,10 +57,11 @@ class Home extends React.Component {
   }
 
   searchProducts() {
-    const { type } = this.state;
+    const { type, selectedColours } = this.state;
     MakeUpApiClient.doSearch(Types[type], (response) => {
+      const filteredResponse = Home.filterByColours(response, selectedColours);
       this.setState({
-        results: response,
+        results: filteredResponse,
         getSearch: true,
       });
     });
