@@ -1,15 +1,30 @@
 'use es6';
 
 import React from 'react';
-
+import { isEmpty } from 'underscore';
 import '../../../css/MakeUpSearch.css';
 import MakeUpTypeList from './MakeUpTypeList';
 import MakeUpColours from './MakeUpColours';
+import Colours from '../../constants/Colours';
+
+const DEFAULT_LIMIT = 112;
 
 class MakeUpSearch extends React.Component {
 
+  static splitColoursIntoBlocks(colours) {
+    const colourBlocks = [];
+    while (!isEmpty(colours)) {
+      colourBlocks.push(colours.splice(0, DEFAULT_LIMIT));
+    }
+    return colourBlocks;
+  }
+
+
   render() {
     const { searchProducts, selectedType, selectType, addColour, selectedColours } = this.props;
+    const colourBlocks = selectedType
+      ? MakeUpSearch.splitColoursIntoBlocks(Colours[selectedType])
+      : [];
     return (
       <div>
         <div className="search-items">
@@ -18,11 +33,11 @@ class MakeUpSearch extends React.Component {
             selectType={selectType}
           />
           <MakeUpColours
-            selectedType={selectedType}
+            colours={colourBlocks}
             selectedColours={selectedColours}
             addColour={addColour}
           />
-          <div className="range">3. Select a range}</div>
+          <div className="range">3. Select a range</div>
         </div>
         <div className="search">
           <button

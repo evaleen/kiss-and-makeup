@@ -28,3 +28,13 @@ min-height: 660px;
 .search-button:hover {
   background-color: #d94c53;
 }
+
+.search-button:focus {
+  outline: none;
+}
+
+.search-button:active {
+  background-color: #d94c53;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.24), 0 4px 12px 0 rgba(0,0,0,0.19);
+  transform: translateY(2px);
+}
