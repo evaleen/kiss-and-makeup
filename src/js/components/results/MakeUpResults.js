@@ -7,7 +7,7 @@ import { findWhere, isEmpty } from 'underscore';
 import SearchResultItem from './SearchResultItem';
 import ProductInformationModal from './ProductInformationModal';
 import '../../../css/MakeUpResults.css';
-import '../../../css/components/button.css';
+import '../../../css/common/button.css';
 
 class MakeUpResults extends React.Component {
 

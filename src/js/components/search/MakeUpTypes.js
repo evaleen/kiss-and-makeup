@@ -6,7 +6,7 @@ import { isEqual } from 'underscore';
 
 import Types from '../../constants/Types';
 import '../../../css/MakeUpTypes.css';
-import '../../../css/components/header.css';
+import '../../../css/common/header.css';
 
 class MakeUpTypes extends React.Component {
 

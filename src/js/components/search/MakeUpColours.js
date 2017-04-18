@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import { contains, isEmpty } from 'underscore';
 
 import '../../../css/MakeUpColours.css';
-import '../../../css/components/header.css';
+import '../../../css/common/header.css';
 
 class MakeUpColours extends React.Component {
 

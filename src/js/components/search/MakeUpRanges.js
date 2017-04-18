@@ -4,8 +4,8 @@ import React from 'react';
 import Slider from 'react-rangeslider';
 
 import '../../../css/MakeUpRanges.css';
-import '../../../css/components/range-slider.css';
-import '../../../css/components/header.css';
+import '../../../css/common/range-slider.css';
+import '../../../css/common/header.css';
 
 class MakeUpPriceRange extends React.Component {
 
