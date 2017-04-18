@@ -7,6 +7,7 @@ import { findWhere, isEmpty } from 'underscore';
 import SearchResultItem from './SearchResultItem';
 import ProductInformationModal from './ProductInformationModal';
 import '../../../css/MakeUpResults.css';
+import '../../../css/components/button.css';
 
 class MakeUpResults extends React.Component {
 
@@ -63,7 +64,7 @@ class MakeUpResults extends React.Component {
     return (
       <div className={classNames({ 'modal-open': !isEmpty(this.state.selectedProduct) })}>
         <button
-          className="back-to-search-button"
+          className="btn back-to-search-button"
           onClick={backToSearch}
         >
            &lt; Back to search

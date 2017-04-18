@@ -56,6 +56,7 @@ class MakeUpColours extends React.Component {
         <div className="colour-pagination">
           <button
             className={classNames({
+              'btn': true,
               'colour-paginator': true,
               'paginator-disabled': pageNum === 0,
             })}
@@ -65,6 +66,7 @@ class MakeUpColours extends React.Component {
           </button>
           <button
             className={classNames({
+              'btn': true,
               'colour-paginator': true,
               'more-paginator': true,
               'paginator-disabled': pageNum === (colours.length - 1),

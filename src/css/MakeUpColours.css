@@ -35,27 +35,8 @@
 }
 
 .colour-paginator {
-  background-color: #f2545b;
   width: 40px;
-  color: #fff;
-  cursor: pointer;
-  border: none;
   padding: 5px;
-  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.24), 0 8px 25px 0 rgba(0,0,0,0.19);
-}
-
-.colour-paginator:focus {
-  outline: none;
-}
-
-.colour-paginator:active {
-  background-color: #d94c53;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.24), 0 4px 12px 0 rgba(0,0,0,0.19);
-  transform: translateY(2px);
-}
-
-.colour-paginator:hover {
-  background-color: #d94c53;
 }
 
 .more-paginator {

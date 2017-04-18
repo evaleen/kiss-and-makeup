@@ -57,7 +57,7 @@ class MakeUpSearch extends React.Component {
         </div>
         <div className="search">
           <button
-            className="search-button"
+            className="btn search-button"
             onClick={searchProducts}
           >
             Search
