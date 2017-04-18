@@ -3,12 +3,12 @@
 import React from 'react';
 import { isEmpty, some } from 'underscore';
 
-import logo from './spinnylogo.png';
-import './css/Home.css';
-import MakeUpSearch from './js/components/search/MakeUpSearch';
-import MakeUpResults from './js/components/results/MakeUpResults';
-import MakeUpApiClient from './js/api/MakeUpApiClient';
-import Types from './js/constants/Types';
+import logo from '../../img/logo.png';
+import '../../css/Home.css';
+import MakeUpSearch from './search/MakeUpSearch';
+import MakeUpResults from './results/MakeUpResults';
+import MakeUpApiClient from '../api/MakeUpApiClient';
+import Types from '../constants/Types';
 
 class Home extends React.Component {
 
@@ -39,6 +39,7 @@ class Home extends React.Component {
   }
 
   addColour({ target: { id } }) {
+    console.log(id);
     const { selectedColours } = this.state;
     const index = selectedColours.indexOf(id);
     if (index > -1) {

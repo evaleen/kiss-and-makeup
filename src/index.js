@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Home from './Home';
+import Home from './js/components/Home';
 import './index.css';
 
 ReactDOM.render(
