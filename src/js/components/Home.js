@@ -7,6 +7,7 @@ import logo from '../../img/logo.png';
 import '../../css/Home.css';
 import MakeUpSearch from './search/MakeUpSearch';
 import MakeUpResults from './results/MakeUpResults';
+import LoadingDialog from './LoadingDialog';
 import MakeUpApiClient from '../api/MakeUpApiClient';
 import Types from '../constants/Types';
 
@@ -32,6 +33,7 @@ class Home extends React.Component {
       selectedColours: [],
       maxPrice: 75,
       minRating: 1,
+      showLoading: false,
     };
     this.selectType = this.selectType.bind(this);
     this.addColour = this.addColour.bind(this);
@@ -69,12 +71,14 @@ class Home extends React.Component {
   }
 
   searchProducts() {
+    this.setState({ showLoading: true });
     const { type, selectedColours, maxPrice, minRating } = this.state;
     MakeUpApiClient.doSearch(Types[type], maxPrice, minRating, (response) => {
       const filteredResponse = Home.filterByColours(response, selectedColours);
       this.setState({
         results: filteredResponse,
         getSearch: true,
+        showLoading: false,
       });
     });
   }
@@ -90,7 +94,12 @@ class Home extends React.Component {
   }
 
   renderMainContent() {
-    const { type, results, selectedColours, maxPrice, minRating, getSearch } = this.state;
+    const { type, results, selectedColours, maxPrice, minRating, getSearch, showLoading } = this.state;
+    if (showLoading) {
+      return (
+        <LoadingDialog />
+      );
+    }
     if (getSearch) {
       return (
         <MakeUpResults
