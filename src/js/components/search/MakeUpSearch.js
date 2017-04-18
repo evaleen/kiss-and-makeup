@@ -1,7 +1,6 @@
 'use es6';
 
 import React from 'react';
-import { isEmpty } from 'underscore';
 import '../../../css/MakeUpSearch.css';
 import MakeUpTypeList from './MakeUpTypeList';
 import MakeUpColours from './MakeUpColours';
@@ -13,8 +12,10 @@ class MakeUpSearch extends React.Component {
 
   static splitColoursIntoBlocks(colours) {
     const colourBlocks = [];
-    while (!isEmpty(colours)) {
-      colourBlocks.push(colours.splice(0, DEFAULT_LIMIT));
+    let startIdx = 0;
+    while (startIdx < colours.length) {
+      colourBlocks.push(colours.slice(startIdx, startIdx + DEFAULT_LIMIT));
+      startIdx += DEFAULT_LIMIT;
     }
     return colourBlocks;
   }

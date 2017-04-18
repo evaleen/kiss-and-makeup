@@ -39,7 +39,6 @@ class Home extends React.Component {
   }
 
   addColour({ target: { id } }) {
-    console.log(id);
     const { selectedColours } = this.state;
     const index = selectedColours.indexOf(id);
     if (index > -1) {
