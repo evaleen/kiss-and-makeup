@@ -1,7 +1,7 @@
 .make-up-ranges {
   flex-grow: 1;
   height: auto;
-  min-width: 200px;
+  width: 250px;
 }
 
 .range {
