@@ -69,8 +69,8 @@ class Home extends React.Component {
   }
 
   searchProducts() {
-    const { type, selectedColours } = this.state;
-    MakeUpApiClient.doSearch(Types[type], (response) => {
+    const { type, selectedColours, maxPrice, minRating } = this.state;
+    MakeUpApiClient.doSearch(Types[type], maxPrice, minRating, (response) => {
       const filteredResponse = Home.filterByColours(response, selectedColours);
       this.setState({
         results: filteredResponse,
@@ -81,7 +81,7 @@ class Home extends React.Component {
 
   backToSearch() {
     this.setState({
-      type: undefined,
+      type: 'BLUSH',
       getSearch: false,
       results: undefined,
       maxPrice: 75,

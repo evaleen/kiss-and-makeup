@@ -18,10 +18,10 @@ function parseJSON(response) {
 }
 
 
-function doSearch(product, response) {
+function doSearch(product, maxPrice, minRating, response) {
   let queryParam = `?product_type=${product.product}`;
   queryParam = product.category ? `${queryParam}&product_category=${product.category}` : queryParam;
-  return fetch(`${BASE_URL}${queryParam}`, {
+  return fetch(`${BASE_URL}${queryParam}&price_less_than=${maxPrice}&rating_greater_than=${minRating}`, {
     accept: 'application/json',
   })
   .then(checkStatus)
