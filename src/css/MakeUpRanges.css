@@ -1,0 +1,15 @@
+.make-up-ranges {
+  float: left;
+  height: auto;
+  width: 40%;
+}
+
+.range {
+  margin-bottom: 20px;
+  height: 100px;
+  width: 100%;
+  background-color: #f2545b;
+  color: #fff;
+  padding: 10px;
+  box-shadow: 0 6px 8px 0 rgba(0,0,0,0.24), 0 10px 25px 0 rgba(0,0,0,0.19);
+}

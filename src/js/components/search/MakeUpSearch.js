@@ -4,12 +4,11 @@ import React from 'react';
 import '../../../css/MakeUpSearch.css';
 import MakeUpTypes from './MakeUpTypes';
 import MakeUpColours from './MakeUpColours';
-import MakeUpPriceRange from './MakeUpPriceRange';
-import MakeUpRatingRange from './MakeUpRatingRange';
+import MakeUpRanges from './MakeUpRanges';
 
 import Colours from '../../constants/Colours';
 
-const DEFAULT_LIMIT = 112;
+const DEFAULT_LIMIT = 128;
 
 class MakeUpSearch extends React.Component {
 
@@ -49,12 +48,10 @@ class MakeUpSearch extends React.Component {
             selectedColours={selectedColours}
             addColour={addColour}
           />
-          <MakeUpPriceRange
-            value={maxPrice}
+          <MakeUpRanges
+            maxPrice={maxPrice}
             updatePriceRange={updatePriceRange}
-          />
-          <MakeUpRatingRange
-            value={minRating}
+            minRating={minRating}
             updateRatingRange={updateRatingRange}
           />
         </div>
