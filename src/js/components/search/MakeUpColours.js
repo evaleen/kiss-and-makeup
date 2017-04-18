@@ -61,7 +61,7 @@ class MakeUpColours extends React.Component {
             })}
             onClick={this.decPageNumber}
           >
-            Back
+            &lt;&lt;
           </button>
           <button
             className={classNames({
@@ -71,7 +71,7 @@ class MakeUpColours extends React.Component {
             })}
             onClick={this.incPageNumber}
           >
-            More
+            &gt;&gt;
           </button>
         </div>
       );

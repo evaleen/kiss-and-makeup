@@ -36,6 +36,7 @@
 
 .colour-paginator {
   background-color: #f2545b;
+  width: 40px;
   color: #fff;
   cursor: pointer;
   border: none;
