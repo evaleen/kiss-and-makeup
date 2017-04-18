@@ -1,7 +1,10 @@
 .search-items {
   margin: 0 auto;
-  min-height: 700px;
-  display:inline-block;
+  display: -webkit-flex;
+   display: flex;
+   -webkit-flex-wrap: wrap;
+   flex-wrap: wrap;
+  height: 100%;
   width: 100%;
 }
 

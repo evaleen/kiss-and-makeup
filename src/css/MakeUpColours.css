@@ -1,8 +1,6 @@
 .colour-list {
-  float: left;
-  width: 30%;
-  min-width: 350px;
-  height: 700px;
+  flex-grow: 1;
+  min-width: 200px;
 }
 
 .colour-header {
