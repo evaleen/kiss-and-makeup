@@ -47,6 +47,13 @@ class MakeUpResults extends React.Component {
   }
 
   renderResults(searchResults) {
+    if (isEmpty(searchResults)) {
+      return (
+        <div className="no-results">
+          <span>No products matched this search. Try again!</span>
+        </div>
+      );
+    }
     return searchResults.map((product) => {
       return (
         <SearchResultItem
@@ -62,7 +69,12 @@ class MakeUpResults extends React.Component {
     const { type, searchResults, backToSearch } = this.props;
     const maybeProductModal = this.maybeRenderProductModal(searchResults);
     return (
-      <div className={classNames({ 'modal-open': !isEmpty(this.state.selectedProduct) })}>
+      <div
+        className={classNames({
+          'search-results': true,
+          'modal-open': !isEmpty(this.state.selectedProduct),
+        })}
+      >
         <button
           className="btn back-to-search-button"
           onClick={backToSearch}

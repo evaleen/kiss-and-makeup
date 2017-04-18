@@ -1,3 +1,12 @@
+.search-results {
+  height: 100vh;
+}
+
 .back-to-search-button {
   padding: 10px;
+}
+
+.no-results {
+
+  text-align: center;
 }
