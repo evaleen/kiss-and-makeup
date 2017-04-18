@@ -67,7 +67,7 @@ class MakeUpColours extends React.Component {
             className={classNames({
               'colour-paginator': true,
               'more-paginator': true,
-              'paginator-disabled': pageNum === colours.length,
+              'paginator-disabled': pageNum === (colours.length - 1),
             })}
             onClick={this.incPageNumber}
           >
