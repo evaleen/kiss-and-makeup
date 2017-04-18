@@ -7,6 +7,7 @@
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "react-modal": "^1.7.3",
+    "react-rangeslider": "^2.0.1",
     "underscore": "^1.8.3",
     "whatwg-fetch": "^2.0.3"
   },

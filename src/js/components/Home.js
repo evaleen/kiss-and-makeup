@@ -27,15 +27,27 @@ class Home extends React.Component {
     super();
     this.state = {
       getSearch: false,
-      type: undefined,
+      type: 'BLUSH',
       results: [],
       selectedColours: [],
+      maxPrice: 75,
+      minRating: 1,
     };
     this.selectType = this.selectType.bind(this);
     this.addColour = this.addColour.bind(this);
     this.searchProducts = this.searchProducts.bind(this);
     this.backToSearch = this.backToSearch.bind(this);
     this.renderMainContent = this.renderMainContent.bind(this);
+    this.updatePriceRange = this.updatePriceRange.bind(this);
+    this.updateRatingRange = this.updateRatingRange.bind(this);
+  }
+
+  updatePriceRange(value) {
+    this.setState({ maxPrice: value });
+  }
+
+  updateRatingRange(value) {
+    this.setState({ minRating: value });
   }
 
   addColour({ target: { id } }) {
@@ -72,11 +84,13 @@ class Home extends React.Component {
       type: undefined,
       getSearch: false,
       results: undefined,
+      maxPrice: 75,
+      minRating: 1,
     });
   }
 
   renderMainContent() {
-    const { type, results, selectedColours, getSearch } = this.state;
+    const { type, results, selectedColours, maxPrice, minRating, getSearch } = this.state;
     if (getSearch) {
       return (
         <MakeUpResults
@@ -93,7 +107,10 @@ class Home extends React.Component {
         addColour={this.addColour}
         selectedColours={selectedColours}
         searchProducts={this.searchProducts}
-
+        maxPrice={maxPrice}
+        updatePriceRange={this.updatePriceRange}
+        minRating={minRating}
+        updateRatingRange={this.updateRatingRange}
       />
     );
   }

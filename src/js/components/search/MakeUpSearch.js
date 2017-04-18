@@ -2,8 +2,11 @@
 
 import React from 'react';
 import '../../../css/MakeUpSearch.css';
-import MakeUpTypeList from './MakeUpTypeList';
+import MakeUpTypes from './MakeUpTypes';
 import MakeUpColours from './MakeUpColours';
+import MakeUpPriceRange from './MakeUpPriceRange';
+import MakeUpRatingRange from './MakeUpRatingRange';
+
 import Colours from '../../constants/Colours';
 
 const DEFAULT_LIMIT = 112;
@@ -22,14 +25,22 @@ class MakeUpSearch extends React.Component {
 
 
   render() {
-    const { searchProducts, selectedType, selectType, addColour, selectedColours } = this.props;
-    const colourBlocks = selectedType
-      ? MakeUpSearch.splitColoursIntoBlocks(Colours[selectedType])
-      : [];
+    const {
+      searchProducts,
+      selectedType,
+      selectType,
+      addColour,
+      selectedColours,
+      maxPrice,
+      updatePriceRange,
+      minRating,
+      updateRatingRange,
+    } = this.props;
+    const colourBlocks = MakeUpSearch.splitColoursIntoBlocks(Colours[selectedType]);
     return (
       <div>
         <div className="search-items">
-          <MakeUpTypeList
+          <MakeUpTypes
             selectedType={selectedType}
             selectType={selectType}
           />
@@ -38,7 +49,14 @@ class MakeUpSearch extends React.Component {
             selectedColours={selectedColours}
             addColour={addColour}
           />
-          <div className="range">3. Select a range</div>
+          <MakeUpPriceRange
+            value={maxPrice}
+            updatePriceRange={updatePriceRange}
+          />
+          <MakeUpRatingRange
+            value={minRating}
+            updateRatingRange={updateRatingRange}
+          />
         </div>
         <div className="search">
           <button
@@ -54,16 +72,17 @@ class MakeUpSearch extends React.Component {
 }
 
 MakeUpSearch.propTypes = {
-  selectedType: React.PropTypes.string,
+  selectedType: React.PropTypes.string.isRequired,
   selectType: React.PropTypes.func.isRequired,
   selectedColours: React.PropTypes.arrayOf(
     React.PropTypes.string,
   ).isRequired,
   addColour: React.PropTypes.func.isRequired,
   searchProducts: React.PropTypes.func.isRequired,
-};
-MakeUpSearch.defaultProps = {
-  selectedType: undefined,
+  maxPrice: React.PropTypes.number.isRequired,
+  updatePriceRange: React.PropTypes.func.isRequired,
+  minRating: React.PropTypes.number.isRequired,
+  updateRatingRange: React.PropTypes.func.isRequired,
 };
 
 export default MakeUpSearch;

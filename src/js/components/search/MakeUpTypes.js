@@ -5,9 +5,10 @@ import classNames from 'classnames';
 import { isEqual } from 'underscore';
 
 import Types from '../../constants/Types';
-import '../../../css/MakeUpTypeList.css';
+import '../../../css/MakeUpTypes.css';
+import '../../../css/components/header.css';
 
-class MakeUpTypeList extends React.Component {
+class MakeUpTypes extends React.Component {
 
   renderTypes() {
     const { selectedType, selectType } = this.props;
@@ -35,19 +36,19 @@ class MakeUpTypeList extends React.Component {
   render() {
     return (
       <div className="type-list">
-        <p className="type-header">1. Select a type:</p>
+        <p className="header">1. Select a type</p>
         {this.renderTypes()}
       </div>
     );
   }
 }
 
-MakeUpTypeList.propTypes = {
+MakeUpTypes.propTypes = {
   selectedType: React.PropTypes.string,
   selectType: React.PropTypes.func.isRequired,
 };
-MakeUpTypeList.defaultProps = {
+MakeUpTypes.defaultProps = {
   selectedType: undefined,
 };
 
-export default MakeUpTypeList;
+export default MakeUpTypes;

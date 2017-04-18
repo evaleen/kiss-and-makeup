@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { contains, isEmpty } from 'underscore';
 
 import '../../../css/MakeUpColours.css';
+import '../../../css/components/header.css';
 
 class MakeUpColours extends React.Component {
 
@@ -90,7 +91,7 @@ class MakeUpColours extends React.Component {
       : null;
     return (
       <div className="colour-list">
-        <p className="colour-header">2. Select a colour:</p>
+        <p className="header">2. Select a colour</p>
         {maybeColours}
       </div>
     );
