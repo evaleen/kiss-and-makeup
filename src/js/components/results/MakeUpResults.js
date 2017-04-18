@@ -75,13 +75,15 @@ class MakeUpResults extends React.Component {
           'modal-open': !isEmpty(this.state.selectedProduct),
         })}
       >
-        <button
-          className="btn back-to-search-button"
-          onClick={backToSearch}
-        >
-           &lt; Back to search
-        </button>
-        <p>Results Page  for {type.name}</p>
+        <div className="results-header">
+          <button
+            className="btn back-to-search-button"
+            onClick={backToSearch}
+          >
+             &lt; Back to search
+          </button>
+          <h1>Results Page  for {type.name}</h1>
+        </div>
         <div className="search-results">
           {this.renderResults(searchResults)}
         </div>

@@ -1,12 +1,21 @@
 .search-results {
-  height: 100vh;
+  height: 100%;
+}
+
+.results-header {
+  margin: 45px 0px;
 }
 
 .back-to-search-button {
+  float: left;
   padding: 10px;
 }
 
 .no-results {
-
   text-align: center;
+}
+
+h1 {
+  color: #d94c53;
+  margin-left: 180px;
 }
