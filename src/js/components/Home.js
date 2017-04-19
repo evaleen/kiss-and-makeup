@@ -11,6 +11,16 @@ import LoadingDialog from './LoadingDialog';
 import MakeUpApiClient from '../api/MakeUpApiClient';
 import Types from '../constants/Types';
 
+const initialState = {
+  type: 'BLUSH',
+  getSearch: false,
+  results: [],
+  selectedColours: [],
+  maxPrice: 75,
+  minRating: 1,
+  showLoading: false,
+};
+
 class Home extends React.Component {
 
   static filterByColours(products, colours) {
@@ -26,15 +36,7 @@ class Home extends React.Component {
 
   constructor() {
     super();
-    this.state = {
-      getSearch: false,
-      type: 'BLUSH',
-      results: [],
-      selectedColours: [],
-      maxPrice: 75,
-      minRating: 1,
-      showLoading: false,
-    };
+    this.state = initialState;
     this.selectType = this.selectType.bind(this);
     this.addColour = this.addColour.bind(this);
     this.searchProducts = this.searchProducts.bind(this);
@@ -84,13 +86,7 @@ class Home extends React.Component {
   }
 
   backToSearch() {
-    this.setState({
-      type: 'BLUSH',
-      getSearch: false,
-      results: undefined,
-      maxPrice: 75,
-      minRating: 1,
-    });
+    this.setState(initialState);
   }
 
   renderMainContent() {
