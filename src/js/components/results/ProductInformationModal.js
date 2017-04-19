@@ -32,7 +32,13 @@ class ProductInformationModal extends React.Component {
 
   static maybeRenderPrice(price) {
     return price
-      ? <div className="product-price product-attribute">Price: {price}</div>
+      ? <div className="product-price product-attribute">Price: ${price}</div>
+      : null;
+  }
+
+  static maybeRenderRating(rating) {
+    return rating
+      ? <div className="product-attribute">Rating: {rating}/5</div>
       : null;
   }
 
@@ -123,6 +129,7 @@ class ProductInformationModal extends React.Component {
           />
           {ProductInformationModal.maybeRenderDescription(product.description)}
           {ProductInformationModal.maybeRenderPrice(product.price)}
+          {ProductInformationModal.maybeRenderRating(product.rating)}
           {ProductInformationModal.maybeRenderBrandLink(product.brand, product.website_link)}
           {ProductInformationModal.maybeRenderColours(product.product_colors)}
           {ProductInformationModal.maybeRenderProductLink(product.product_link)}
