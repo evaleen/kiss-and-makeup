@@ -94,3 +94,7 @@
 .product-link:hover {
   background-color: #d94c53;
 }
+
+.ReactModal__Body--open {
+    overflow: hidden;
+}
