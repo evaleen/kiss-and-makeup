@@ -1,41 +1,24 @@
 'use es6';
 
 const Types = {
-  BLUSH: {
-    product: 'blush',
-    name: 'Blush',
+  LIPSTICK: {
+    product: 'lipstick',
+    category: 'lipstick',
+    name: 'Lipstick',
   },
-  BLUSH_POWDER: {
-    product: 'blush',
-    category: 'powder',
-    name: 'Powder Blush',
+  LIP_LINER: {
+    product: 'lip_liner',
+    name: 'Lip liner',
   },
-  BLUSH_CREAM: {
-    product: 'blush',
-    category: 'cream',
-    name: 'Cream Blush',
+  LIP_GLOSS: {
+    product: 'lipstick',
+    category: 'lip_gloss',
+    name: 'Lip gloss',
   },
-  BRONZER: {
-    product: 'bronzer',
-    name: 'Bronzer',
-  },
-  EYEBROW: {
-    product: 'eyebrow',
-    name: 'Eyebrow',
-  },
-  EYELINER_LIQUID: {
-    product: 'eyeliner',
-    category: 'liquid',
-    name: 'Liquid eyeliner',
-  },
-  EYELINER_PENCIL: {
-    product: 'eyeliner',
-    category: 'pencil',
-    name: 'Pencil eyeliner',
-  },
-  EYESHADOW: {
-    product: 'eyeshadow',
-    name: 'Eyeshadow',
+  LIP_STAIN: {
+    product: 'lipstick',
+    category: 'lip_stain',
+    name: 'Lip stain',
   },
   FOUNDATION: {
     product: 'foundation',
@@ -66,33 +49,45 @@ const Types = {
     category: 'mineral',
     name: 'Mineral foundation',
   },
-  CONCEALER: {
-    product: 'foundation',
-    category: 'concealer',
-    name: 'Concealer',
+  BLUSH: {
+    product: 'blush',
+    name: 'Blush',
   },
-  LIP_LINER: {
-    product: 'lip_liner',
-    name: 'Lip liner',
+  BLUSH_POWDER: {
+    product: 'blush',
+    category: 'powder',
+    name: 'Powder Blush',
   },
-  LIPSTICK: {
-    product: 'lipstick',
-    category: 'lipstick',
-    name: 'Lipstick',
+  BLUSH_CREAM: {
+    product: 'blush',
+    category: 'cream',
+    name: 'Cream Blush',
   },
-  LIP_GLOSS: {
-    product: 'lipstick',
-    category: 'lip_gloss',
-    name: 'Lip gloss',
-  },
-  LIP_STAIN: {
-    product: 'lipstick',
-    category: 'lip_stain',
-    name: 'Lip stain',
+  BRONZER: {
+    product: 'bronzer',
+    name: 'Bronzer',
   },
   MASCARA: {
     product: 'mascara',
     name: 'Mascara',
+  },
+  EYEBROW: {
+    product: 'eyebrow',
+    name: 'Eyebrow',
+  },
+  EYELINER_LIQUID: {
+    product: 'eyeliner',
+    category: 'liquid',
+    name: 'Liquid eyeliner',
+  },
+  EYELINER_PENCIL: {
+    product: 'eyeliner',
+    category: 'pencil',
+    name: 'Pencil eyeliner',
+  },
+  EYESHADOW: {
+    product: 'eyeshadow',
+    name: 'Eyeshadow',
   },
   NAIL_POLISH: {
     product: 'nail_polish',

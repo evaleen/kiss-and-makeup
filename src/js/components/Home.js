@@ -12,7 +12,7 @@ import MakeUpApiClient from '../api/MakeUpApiClient';
 import Types from '../constants/Types';
 
 const initialState = {
-  type: 'BLUSH',
+  type: 'LIPSTICK',
   getSearch: false,
   results: [],
   selectedColours: [],
