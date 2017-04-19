@@ -20,6 +20,10 @@ class MakeUpResults extends React.Component {
     this.closeModal = this.closeModal.bind(this);
   }
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   selectProduct({ target: { id } }) {
     this.setState({
       selectedProduct: id,
