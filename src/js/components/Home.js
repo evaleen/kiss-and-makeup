@@ -19,6 +19,7 @@ const initialState = {
   maxPrice: 75,
   minRating: 1,
   showLoading: false,
+  colourPageNumber: 0,
 };
 
 class Home extends React.Component {
@@ -44,6 +45,8 @@ class Home extends React.Component {
     this.renderMainContent = this.renderMainContent.bind(this);
     this.updatePriceRange = this.updatePriceRange.bind(this);
     this.updateRatingRange = this.updateRatingRange.bind(this);
+    this.incColourPageNumber = this.incColourPageNumber.bind(this);
+    this.decColourPageNumber = this.decColourPageNumber.bind(this);
   }
 
   updatePriceRange(value) {
@@ -52,6 +55,16 @@ class Home extends React.Component {
 
   updateRatingRange(value) {
     this.setState({ minRating: value });
+  }
+
+  incColourPageNumber() {
+    const { colourPageNumber } = this.state;
+    this.setState({ colourPageNumber: colourPageNumber + 1 });
+  }
+
+  decColourPageNumber() {
+    const { colourPageNumber } = this.state;
+    this.setState({ colourPageNumber: colourPageNumber - 1 });
   }
 
   addColour({ target: { id } }) {
@@ -69,6 +82,7 @@ class Home extends React.Component {
     this.setState({
       type: id,
       selectedColours: [],
+      colourPageNumber: 0,
     });
   }
 
@@ -90,7 +104,7 @@ class Home extends React.Component {
   }
 
   renderMainContent() {
-    const { type, results, selectedColours, maxPrice, minRating, getSearch, showLoading } = this.state;
+    const { type, results, selectedColours, colourPageNumber, maxPrice, minRating, getSearch, showLoading } = this.state;
     if (showLoading) {
       return (
         <LoadingDialog />
@@ -116,6 +130,9 @@ class Home extends React.Component {
         updatePriceRange={this.updatePriceRange}
         minRating={minRating}
         updateRatingRange={this.updateRatingRange}
+        colourPageNumber={colourPageNumber}
+        incColourPageNumber={this.incColourPageNumber}
+        decColourPageNumber={this.decColourPageNumber}
       />
     );
   }

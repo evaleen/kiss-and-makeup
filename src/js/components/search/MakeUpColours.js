@@ -29,27 +29,8 @@ class MakeUpColours extends React.Component {
     });
   }
 
-  constructor() {
-    super();
-    this.state = {
-      pageNum: 0,
-    };
-    this.incPageNumber = this.incPageNumber.bind(this);
-    this.decPageNumber = this.decPageNumber.bind(this);
-  }
-
-  incPageNumber() {
-    const { pageNum } = this.state;
-    this.setState({ pageNum: pageNum + 1 });
-  }
-
-  decPageNumber() {
-    const { pageNum } = this.state;
-    this.setState({ pageNum: pageNum - 1 });
-  }
-
-  renderColours(colours, selectedColours, addColour) {
-    const { pageNum } = this.state;
+  renderColours(colours) {
+    const { selectedColours, addColour, pageNumber, incPageNumber, decPageNumber } = this.props;
     let maybePaginators;
     if (colours.length > 1) {
       maybePaginators = (
@@ -58,9 +39,9 @@ class MakeUpColours extends React.Component {
             className={classNames({
               'btn': true,
               'colour-paginator': true,
-              'paginator-disabled': pageNum === 0,
+              'paginator-disabled': pageNumber === 0,
             })}
-            onClick={this.decPageNumber}
+            onClick={decPageNumber}
           >
             &lt;&lt;
           </button>
@@ -69,9 +50,9 @@ class MakeUpColours extends React.Component {
               'btn': true,
               'colour-paginator': true,
               'more-paginator': true,
-              'paginator-disabled': pageNum === (colours.length - 1),
+              'paginator-disabled': pageNumber === (colours.length - 1),
             })}
-            onClick={this.incPageNumber}
+            onClick={incPageNumber}
           >
             &gt;&gt;
           </button>
@@ -80,16 +61,16 @@ class MakeUpColours extends React.Component {
     }
     return (
       <div className="colour-section">
-        {MakeUpColours.renderBlockOfColours(colours[pageNum], selectedColours, addColour)}
+        {MakeUpColours.renderBlockOfColours(colours[pageNumber], selectedColours, addColour)}
         {maybePaginators}
       </div>
     );
   }
 
   render() {
-    const { colours, selectedColours, addColour } = this.props;
+    const { colours } = this.props;
     const maybeColours = !isEmpty(colours)
-      ? this.renderColours(colours, selectedColours, addColour)
+      ? this.renderColours(colours)
       : null;
     return (
       <div className="colour-list">
@@ -110,6 +91,9 @@ MakeUpColours.propTypes = {
   selectedColours: React.PropTypes.arrayOf(
     React.PropTypes.string,
   ).isRequired,
+  pageNumber: React.PropTypes.number.isRequired,
+  incPageNumber: React.PropTypes.func.isRequired,
+  decPageNumber: React.PropTypes.func.isRequired,
 };
 MakeUpColours.defaultProps = {
   colours: [],

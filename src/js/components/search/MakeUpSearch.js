@@ -34,6 +34,9 @@ class MakeUpSearch extends React.Component {
       updatePriceRange,
       minRating,
       updateRatingRange,
+      colourPageNumber,
+      incColourPageNumber,
+      decColourPageNumber,
     } = this.props;
     const colourBlocks = MakeUpSearch.splitColoursIntoBlocks(Colours[selectedType]);
     return (
@@ -47,6 +50,9 @@ class MakeUpSearch extends React.Component {
             colours={colourBlocks}
             selectedColours={selectedColours}
             addColour={addColour}
+            pageNumber={colourPageNumber}
+            incPageNumber={incColourPageNumber}
+            decPageNumber={decColourPageNumber}
           />
           <MakeUpRanges
             maxPrice={maxPrice}
@@ -80,6 +86,9 @@ MakeUpSearch.propTypes = {
   updatePriceRange: React.PropTypes.func.isRequired,
   minRating: React.PropTypes.number.isRequired,
   updateRatingRange: React.PropTypes.func.isRequired,
+  colourPageNumber: React.PropTypes.number.isRequired,
+  incColourPageNumber: React.PropTypes.func.isRequired,
+  decColourPageNumber: React.PropTypes.func.isRequired,
 };
 
 export default MakeUpSearch;
