@@ -3,6 +3,8 @@
 import React from 'react';
 import { isEmpty } from 'underscore';
 import Modal from 'react-modal';
+import MappleToolTip from 'reactjs-mappletooltip';
+
 import '../../../css/ProductInformationModal.css';
 
 const customStyle = {
@@ -65,12 +67,21 @@ class ProductInformationModal extends React.Component {
       const colourBlocks = colours.map((colour) => {
         const style = { backgroundColor: colour.hex_value };
         return (
-          <div
-            key={colour.hex_value}
-            id={colour.hex_value}
-            className="colour-block"
-            style={style}
-          />
+          <div className="block" key={colour.hex_value}>
+            <MappleToolTip
+              mappleType="light"
+              tipPosition={52}
+            >
+            <div
+              id={colour.hex_value}
+              style={style}
+              className="colour-block"
+            />
+              <div className="tooltip">
+                <small>{colour.colour_name}</small>
+              </div>
+            </MappleToolTip>
+          </div>
         );
       });
       return (
