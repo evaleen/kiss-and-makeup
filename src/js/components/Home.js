@@ -10,14 +10,15 @@ import MakeUpResults from './results/MakeUpResults';
 import LoadingDialog from './LoadingDialog';
 import MakeUpApiClient from '../api/MakeUpApiClient';
 import Types from '../constants/Types';
+import { maxPriceOfProduct, minRatingOfProduct } from '../constants/ProductParameters';
 
 const initialState = {
   type: 'LIPSTICK',
   getSearch: false,
   results: [],
   selectedColours: [],
-  maxPrice: 75,
-  minRating: 1,
+  maxPrice: maxPriceOfProduct,
+  minRating: minRatingOfProduct,
   showLoading: false,
   colourPageNumber: 0,
 };
