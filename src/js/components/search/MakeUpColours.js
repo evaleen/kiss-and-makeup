@@ -3,7 +3,9 @@
 import React from 'react';
 import classNames from 'classnames';
 import { contains, isEmpty } from 'underscore';
+import MappleToolTip from 'reactjs-mappletooltip';
 
+import info from '../../../img/info.png';
 import '../../../css/MakeUpColours.css';
 import '../../../css/common/header.css';
 
@@ -74,7 +76,20 @@ class MakeUpColours extends React.Component {
       : null;
     return (
       <div className="colour-list">
-        <p className="header">2. Select a colour</p>
+        <p className="header">
+          2. Select a colour
+          <MappleToolTip
+            mappleType="light"
+            tipPosition={52}
+          >
+            <div className="tooltip-icon">
+              <img src={info} className="info-icon" alt="info-icon" />
+            </div>
+            <div className="tooltip">
+              <small>Selecting no colours will get all the products</small>
+            </div>
+          </MappleToolTip>
+        </p>
         {maybeColours}
       </div>
     );
